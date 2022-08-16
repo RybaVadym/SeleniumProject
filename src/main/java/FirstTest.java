@@ -29,7 +29,6 @@ public class FirstTest {
         By cvv = By.xpath("//*[@data-qa-node='cvvdebitSource']");
         By name = By.xpath("//input[@data-qa-node='firstNamedebitSource']");
         By surname = By.xpath("//input[@data-qa-node='lastNamedebitSource']");
-        By service = By.xpath("//*[contains(text(), 'користування сервісом')]");
         By submitBtn = By.xpath("//button[@type='submit']");
 
 
@@ -52,7 +51,6 @@ public class FirstTest {
                 .sendKeys("Vadym");
         driver.findElement(surname)
                 .sendKeys("Ryba");
-        driver.findElement(service).click();
         driver.findElement(submitBtn).submit();
 
 
@@ -71,6 +69,8 @@ public class FirstTest {
 
 
 
+
+
         Assertions.assertEquals("Поповнення мобільного", driver.findElement(actualComment).getText());
         Assertions.assertEquals("Поповнення телефону. На номер +380966189252", driver.findElement(actualMob).getText());
         Assertions.assertEquals("4004 **** **** 9003", driver.findElement(actualCardFrom).getText());
@@ -78,6 +78,7 @@ public class FirstTest {
         Assertions.assertEquals("1 UAH", driver.findElement(actualSum).getText());
         Assertions.assertEquals("2", driver.findElement(actualCommision).getText());
         Assertions.assertEquals(" UAH", driver.findElement(actualCurrency).getText());
+
 
 
 
