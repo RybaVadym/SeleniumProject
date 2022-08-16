@@ -29,7 +29,7 @@ public class FirstTest {
         By cvv = By.xpath("//*[@data-qa-node='cvvdebitSource']");
         By name = By.xpath("//input[@data-qa-node='firstNamedebitSource']");
         By surname = By.xpath("//input[@data-qa-node='lastNamedebitSource']");
-
+        By service = By.xpath("//*[contains(text(), 'користування сервісом')]");
         By submitBtn = By.xpath("//button[@type='submit']");
 
 
@@ -52,7 +52,7 @@ public class FirstTest {
                 .sendKeys("Vadym");
         driver.findElement(surname)
                 .sendKeys("Ryba");
-
+        driver.findElement(service).click();
         driver.findElement(submitBtn).submit();
 
 
