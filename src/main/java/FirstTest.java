@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -16,8 +17,8 @@ public class FirstTest {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
         String CARD_FROM = "4004159115449003";
+
         By codePhone = By.xpath("//*[@data-qa-node='phone-code']");
         By search = By.xpath("//input[@placeholder='Пошук']");
         By codeOption = By.xpath("//*[@data-qa-node='phone-code-option']");
@@ -28,7 +29,7 @@ public class FirstTest {
         By cvv = By.xpath("//*[@data-qa-node='cvvdebitSource']");
         By name = By.xpath("//input[@data-qa-node='firstNamedebitSource']");
         By surname = By.xpath("//input[@data-qa-node='lastNamedebitSource']");
-        By service = By.xpath("//*[contains(text(), 'користування сервісом')]");
+
         By submitBtn = By.xpath("//button[@type='submit']");
 
 
@@ -51,8 +52,49 @@ public class FirstTest {
                 .sendKeys("Vadym");
         driver.findElement(surname)
                 .sendKeys("Ryba");
-        driver.findElement(service).click();
+
         driver.findElement(submitBtn).submit();
+
+
+        By actualComment = By.xpath("//*[@data-qa-node='category']");
+        By actualMob = By.xpath("//*[@data-qa-node='details']");
+        By actualCardFrom = By.xpath("//*[@data-qa-node='card']");
+        By actualRecipient = By.xpath("//*[@data-qa-node='nameB']");
+        By actualSum = By.xpath("//td//div[@data-qa-node='amount']");
+        By actualCommision = By.xpath("//span[@data-qa-node='commission']");
+        By actualCurrency = By.xpath("//span[@data-qa-node='commission-currency']");
+
+
+
+
+
+
+
+
+        Assertions.assertEquals("Поповнення мобільного", driver.findElement(actualComment).getText());
+        Assertions.assertEquals("Поповнення телефону. На номер +380966189252", driver.findElement(actualMob).getText());
+        Assertions.assertEquals("4004 **** **** 9003", driver.findElement(actualCardFrom).getText());
+        Assertions.assertEquals("Kyivstar Ukraine", driver.findElement(actualRecipient).getText());
+        Assertions.assertEquals("1 UAH", driver.findElement(actualSum).getText());
+        Assertions.assertEquals("2", driver.findElement(actualCommision).getText());
+        Assertions.assertEquals(" UAH", driver.findElement(actualCurrency).getText());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
